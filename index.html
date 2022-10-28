@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Super-Todo-Uper</title>
 
     <script>
-        function myFunction() {
-  var x = document.getElementById("hide");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+      function myFunction() {
+        var x = document.getElementById("hide");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
     </script>
-</head> 
+  </head>
 
-
-<body>
-    
+  <body>
     <div>
-        <h1>Super-Todo-Uper v1</h1>
-        <i class="fa fa-square-o"></i> <input type="text" />
-        <span>
-            <button>Add</button>
-        </span>
+      <h1>Super-Todo-Uper v1</h1>
+      <i class="fa fa-square-o"></i> <input type="text" />
+      <span>
+        <button>Add</button>
+      </span>
     </div>
 
     <div>
-        <h2>My List</h2> (<a href="#" onclick="myFunction()">show examples</a>)
+      <h2>My List</h2>
+      (<a href="#" onclick="myFunction()">show examples</a>)
 
-        <div id="hide" style="display: none">
-            <div><input type="checkbox" />Buy coffee and eggs </div>
-            <div><input type="checkbox" checked />Clean bathroom </div>
-            <div><input type="checkbox" checked />Register for seminar </div>
-        </div>
+      <div id="hide" style="display: none">
+        <div><input type="checkbox" />Buy coffee and eggs</div>
+        <div><input type="checkbox" checked />Clean bathroom</div>
+        <div><input type="checkbox" checked />Register for seminar</div>
+      </div>
 
-            There's nothing todo!
-
+      There's nothing todo!
     </div>
-
-
-
-</body>
+  </body>
 </html>
