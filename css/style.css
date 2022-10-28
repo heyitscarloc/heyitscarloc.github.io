@@ -7,3 +7,6 @@ h1,h2 {
     display: none;
 }
 
+.pad {
+    margin-right: 10px;
+}
