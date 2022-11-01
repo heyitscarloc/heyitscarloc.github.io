@@ -9,18 +9,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js"></script>
     <title>Super-Todo-Uper</title>
 
-    <script>
-      function myFunction() {
-        var x = document.getElementById("hide");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
-      }
-    </script>
+
+
   </head>
 
   <body>
@@ -37,9 +30,9 @@
       (<a href="#" onclick="myFunction()">show examples</a>)
 
       <div id="hide" style="display: none">
-        <div><input class="pad" type="checkbox" />Buy coffee and eggs</div>
-        <div><input class="pad" type="checkbox" checked />Clean bathroom</div>
-        <div><input class="pad" type="checkbox" checked />Register for seminar</div>
+        <div><input class="pad" type="checkbox" onclick="toggleCheckboxText()"/>Buy coffee and eggs</div>
+        <div style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()" checked />Clean bathroom</div>
+        <div style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()" checked />Register for seminar</div>
       </div>
 
       <p>There's nothing todo!</p>
