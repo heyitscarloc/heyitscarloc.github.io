@@ -15,3 +15,18 @@ function myFunction() {
     x.style.display = "none";
   }
 }
+
+function loadPlaceholderText() {
+  // array of potential placeholders
+  var randomPlaceholderText = ["Take a walk", "Fill cat's food bowl", "Go to doctors appointment", "Do the laundry", "Replace fish tank water", "Accept RSVP for event", "Replace tires", "Rake the leaves", "Buy milk", "Get high" ];
+
+  //selected placeholder text using math api
+  var pickedPlaceholderText = randomPlaceholderText[Math.floor(Math.random() * 10)];
+
+  //get add task text
+  var selectedControl = document.getElementById("addTaskText");
+
+  //set random text to attribute
+  selectedControl.attributes.placeholder.value = pickedPlaceholderText;
+
+}
