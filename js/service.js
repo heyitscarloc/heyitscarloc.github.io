@@ -18,6 +18,10 @@ function s_getAllTasks() {
     return d_getAllTasks();
 }
 
+function s_clearAll() {
+    d_clearAll();
+}
+
 function convertToTask(taskText, timestamp, completedDate) {
     const singleTask = {
         task:taskText,
