@@ -30,3 +30,46 @@ function loadPlaceholderText() {
   selectedControl.attributes.placeholder.value = pickedPlaceholderText;
 
 }
+
+function saveTask(value) {
+  let taskText = document.getElementById("addTaskText").value;
+  
+  // do work only if we need to
+  if(!taskText) {
+    return;
+  }
+
+  let savedTask = s_saveTask(taskText, Date.now(), null);
+  document.getElementById("addTaskText").value = "";
+
+  refreshTasks();
+
+
+}
+
+function refreshTasks() {
+  // clear all items
+  document.querySelectorAll(".item").forEach(item => item.remove());
+
+  let tasks = s_getAllTasks();
+  
+  // refresh task list
+  for(let i=0; i < tasks.length; i++) {
+    document.getElementById("list").innerHTML += objectToDivItem(tasks[i].task, tasks[i].createdDate, tasks[i].completedDate);
+  }
+}
+
+function clearAll() {
+  s_clearAll();
+  // clear all items
+  document.querySelectorAll(".item").forEach(item => item.remove());
+  document.getElementById("list").innerHTML += emptyItem();
+}
+
+function objectToDivItem(task, createdDate, completedDate) {
+  return `<div class='item' data-created='${createdDate}' style=${completedDate !== undefined ? 'text-decoration:line-through' : ''}><input class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== undefined ? 'checked' : ''} ><label>${task}</label><button>delete</button></div>`;
+}
+
+function emptyItem() {
+  return `<div class="item"><p>There's nothing todo!</p></div>`;
+}
