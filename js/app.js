@@ -1,10 +1,19 @@
 
 function toggleCheckboxText() {
+  let completedDate;
+  // update UI
   if(event.target.checked){
-  event.target.parentElement.style.textDecoration= "line-through";
+    event.target.parentElement.style.textDecoration= "line-through";
+    completedDate = Date.now();
   }else{
     event.target.parentElement.style.textDecoration= "none";
+    completedDate = null;
   }
+
+  //update task
+  let taskIdToToggle = s_updateTask(event.target.id, completedDate);
+
+  refreshTasks();
 }
 
 function myFunction() {
@@ -75,7 +84,7 @@ function clearAll() {
 
 // html to update
 function objectToDivItem(task, createdDate, completedDate) {
-  return `<div class='item' data-created='${createdDate}' style=${completedDate !== undefined ? 'text-decoration:line-through' : ''}><label><input class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== undefined ? 'checked' : ''} >${task}</label><button>delete</button></div>`;
+  return `<div class='item' style=${completedDate !== null ? 'text-decoration:line-through' : ''}><label><input id='${createdDate}' class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== null ? 'checked' : ''} >${task}</label><button>delete</button></div>`;
 }
 
 function emptyItem() {
