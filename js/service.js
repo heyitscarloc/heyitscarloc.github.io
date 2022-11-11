@@ -14,6 +14,10 @@ function s_saveTask(taskText, timestamp, completedDate) {
     return task;
 }
 
+function s_getAllTasks() {
+    return d_getAllTasks();
+}
+
 function convertToTask(taskText, timestamp, completedDate) {
     const singleTask = {
         task:taskText,
