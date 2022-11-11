@@ -16,6 +16,13 @@ function toggleCheckboxText() {
   refreshTasks();
 }
 
+function deleteTask() {
+  let itemDiv = event.target.closest(".item");
+  let checkboxHtml = itemDiv.querySelector("input");
+  s_deleteTask(checkboxHtml.id);
+  refreshTasks();
+}
+
 function myFunction() {
   var x = document.getElementById("hide");
   if (x.style.display === "none") {
@@ -84,7 +91,7 @@ function clearAll() {
 
 // html to update
 function objectToDivItem(task, createdDate, completedDate) {
-  return `<div class='item' style=${completedDate !== null ? 'text-decoration:line-through' : ''}><label><input id='${createdDate}' class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== null ? 'checked' : ''} >${task}</label><button>delete</button></div>`;
+  return `<div class='item' style=${completedDate !== null ? 'text-decoration:line-through' : ''}><label><input id='${createdDate}' class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== null ? 'checked' : ''} >${task}</label><button onclick='deleteTask()'>delete</button></div>`;
 }
 
 function emptyItem() {
