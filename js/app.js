@@ -37,6 +37,7 @@ function loadAll() {
   loadPlaceholderText();
   refreshTasks();
 
+  self.setInterval(refreshTasks, 5000);
 }
 
 function loadPlaceholderText() {
