@@ -3,10 +3,6 @@ h1,h2 {
     color: purple;
 }
 
-.hide {
-    display: none;
-}
-
 .pad {
     margin-right: 10px;
 }
