@@ -66,6 +66,7 @@ function clearAll() {
   document.getElementById("list").innerHTML += emptyItem();
 }
 
+// html to update
 function objectToDivItem(task, createdDate, completedDate) {
   return `<div class='item' data-created='${createdDate}' style=${completedDate !== undefined ? 'text-decoration:line-through' : ''}><label><input class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== undefined ? 'checked' : ''} >${task}</label><button>delete</button></div>`;
 }
