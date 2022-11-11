@@ -31,7 +31,7 @@ function loadPlaceholderText() {
 
 }
 
-function saveTask(value) {
+function saveTask() {
   let taskText = document.getElementById("addTaskText").value;
   
   // do work only if we need to
@@ -67,7 +67,7 @@ function clearAll() {
 }
 
 function objectToDivItem(task, createdDate, completedDate) {
-  return `<div class='item' data-created='${createdDate}' style=${completedDate !== undefined ? 'text-decoration:line-through' : ''}><input class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== undefined ? 'checked' : ''} ><label>${task}</label><button>delete</button></div>`;
+  return `<div class='item' data-created='${createdDate}' style=${completedDate !== undefined ? 'text-decoration:line-through' : ''}><label><input class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== undefined ? 'checked' : ''} >${task}</label><button>delete</button></div>`;
 }
 
 function emptyItem() {
