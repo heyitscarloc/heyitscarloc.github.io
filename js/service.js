@@ -1,6 +1,6 @@
 function s_saveTask(taskText, timestamp, completedDate) {
     //convert to object
-    let task = convertToTask(taskText, timestamp);
+    let task = convertToTask(taskText, timestamp, completedDate);
 
     //fetch all tasks
     var tasks = d_getAllTasks();
@@ -12,6 +12,15 @@ function s_saveTask(taskText, timestamp, completedDate) {
     d_saveAllTasks(tasks);
 
     return task;
+}
+
+function s_updateTask(taskId, completedDate) {
+    var allTasks = d_getAllTasks();
+    var taskToUpdate = allTasks.findIndex(t => t.createdDate == taskId);
+    
+    allTasks[taskToUpdate].completedDate = completedDate;
+
+    d_saveAllTasks(allTasks);
 }
 
 function s_getAllTasks() {
