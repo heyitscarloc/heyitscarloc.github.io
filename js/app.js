@@ -30,3 +30,14 @@ function loadPlaceholderText() {
   selectedControl.attributes.placeholder.value = pickedPlaceholderText;
 
 }
+
+function saveTask(value) {
+  let taskText = document.getElementById("addTaskText").value;
+
+  let savedTask = s_saveTask(taskText, Date.now());
+
+  // add task to UI
+  console.log(savedTask);
+
+}
+
