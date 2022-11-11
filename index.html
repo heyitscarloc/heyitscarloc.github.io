@@ -21,7 +21,7 @@
     <form>
     <input id="addTaskText" type="text" placeholder="random text" required />
     <span>
-      <input type="submit" onclick="saveTask(this.value)" value="Add"/>
+      <input type="submit" onclick="saveTask()" value="Add"/>
     </span>
     </form>
   </div>
@@ -31,28 +31,33 @@
 
     <div id="hide" style="display: none">
       <div><input class="pad" type="checkbox" onclick="toggleCheckboxText()" /><label>Buy coffee and eggs</label>
-        <span>
+
           <button>delete</button>
-        </span>
+
       </div>
 
       <div style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()"
           checked /><label>Clean bathroom</label>
-        <span>
+
           <button>delete</button>
-        </span>
+
       </div>
 
       <div style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()"
           checked /><label>Register for seminar</label>
-        <span>
+
           <button>delete</button>
-        </span>
+
       </div>
 
     </div>
 
-    <p>There's nothing todo!</p>
+    <div id="list">
+      <div class="item">
+        <p>There's nothing todo!</p>
+      </div>
+    </div>
+    
 
   </div>
 </body>
