@@ -16,6 +16,13 @@ function myFunction() {
   }
 }
 
+function loadAll() {
+
+  loadPlaceholderText();
+  refreshTasks();
+
+}
+
 function loadPlaceholderText() {
   // array of potential placeholders
   var randomPlaceholderText = ["Take a walk", "Fill cat's food bowl", "Go to doctors appointment", "Do the laundry", "Replace fish tank water", "Accept RSVP for event", "Replace tires", "Rake the leaves", "Buy milk", "Get high" ];
