@@ -1,37 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/app.js"></script>
-    <title>Super-Todo-Uper</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/app.js"></script>
+  <script src="js/service.js"></script>
+  <script src="js/db.js"></script>
+  <title>Super-Todo-Uper</title>
 
 
 
-  </head>
+</head>
 
-  <body>
-    <div>
-      <h1>Super-Todo-Uper V2.0.0</h1>
-       <input type="text" />
-      <span>
-        <button>Add</button>
-      </span>
-    </div>
-    <div>
-      <h2>My List</h2>
-      (<a href="#" onclick="myFunction()">show examples</a>)
+<body onload="loadAll()">
+  <div>
+    <h1>Super-Todo-Uper v3.0.0</h1>
+    <form>
+    <input id="addTaskText" type="text" placeholder="random text" required />
+    <span>
+      <input type="submit" onclick="saveTask()" value="Add"/>
+    </span>
+    </form>
+  </div>
+  <div>
+    <h2>My List</h2>
+    (<a href="#" onclick="myFunction()">show examples</a>) <button onclick="clearAll()">Delete All</button>
 
-      <div id="hide" style="display: none">
-        <div><input class="pad" type="checkbox" onclick="toggleCheckboxText()"/>Buy coffee and eggs</div>
-        <div style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()" checked />Clean bathroom</div>
-        <div style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()" checked />Register for seminar</div>
+    <div id="hide" style="display: none">
+      <div><label><input class="pad" type="checkbox" onclick="toggleCheckboxText()" />Buy coffee and eggs</label>
+          <button>delete</button>
       </div>
 
-      <p>There's nothing todo!</p>
+      <div><label style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()"
+          checked />Clean bathroom</label>
+          <button>delete</button>
+      </div>
+      <div><label style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()"
+          checked />Register for seminar</label>
+          <button>delete</button>
+      </div>
 
     </div>
-  </body>
+
+    <div id="list">
+      <div class="item">
+        <p>There's nothing todo!</p>
+      </div>
+    </div>
+    
+
+  </div>
+</body>
+
 </html>
