@@ -11,7 +11,7 @@ function toggleCheckboxText() {
   }
 
   //update task
-  let taskIdToToggle = s_updateTask(event.target.id, completedDate);
+  s_updateTask(event.target.id, completedDate);
 
   refreshTasks();
 }
