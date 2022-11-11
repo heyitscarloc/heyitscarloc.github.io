@@ -34,7 +34,7 @@ function loadPlaceholderText() {
 function saveTask(value) {
   let taskText = document.getElementById("addTaskText").value;
 
-  let savedTask = s_saveTask(taskText, Date.now());
+  let savedTask = s_saveTask(taskText, Date.now(), null);
 
   // add task to UI
   console.log(savedTask);

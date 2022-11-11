@@ -1,4 +1,4 @@
-function s_saveTask(taskText, timestamp) {
+function s_saveTask(taskText, timestamp, completedDate) {
     //convert to object
     let task = convertToTask(taskText, timestamp);
 
@@ -14,10 +14,11 @@ function s_saveTask(taskText, timestamp) {
     return task;
 }
 
-function convertToTask(taskText, timestamp) {
+function convertToTask(taskText, timestamp, completedDate) {
     const singleTask = {
         task:taskText,
-        createdDate:timestamp
+        createdDate:timestamp,
+        completedDate:completedDate
     }
 
     return singleTask;
