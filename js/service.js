@@ -23,6 +23,15 @@ function s_updateTask(taskId, completedDate) {
     d_saveAllTasks(allTasks);
 }
 
+function s_deleteTask(taskId) {
+    var allTasks = d_getAllTasks();
+    var taskToDelete = allTasks.findIndex(t => t.createdDate == taskId);
+    
+    allTasks.splice(taskToDelete, 1);
+
+    d_saveAllTasks(allTasks);
+}
+
 function s_getAllTasks() {
     return d_getAllTasks();
 }
