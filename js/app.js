@@ -23,6 +23,7 @@ function deleteTask() {
   refreshTasks();
 }
 
+// global function?
 function myFunction() {
   var x = document.getElementById("hide");
   if (x.style.display === "none") {
@@ -71,6 +72,16 @@ function saveTask() {
 
 }
 
+
+function showHideNothingClass(tasks) {
+  var x = document.querySelector(".nothing");
+  if (tasks.length > 0) {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
 function refreshTasks() {
   // clear all items
   document.querySelectorAll(".item").forEach(item => item.remove());
@@ -81,6 +92,8 @@ function refreshTasks() {
   for(let i=0; i < tasks.length; i++) {
     document.getElementById("list").innerHTML += objectToDivItem(tasks[i].task, tasks[i].createdDate, tasks[i].completedDate);
   }
+  //toggle there's nothing todo
+  showHideNothingClass(tasks);
 }
 
 function clearAll() {
