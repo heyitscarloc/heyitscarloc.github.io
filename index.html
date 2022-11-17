@@ -1,39 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="js/app.js"></script>
-  <script src="js/service.js"></script>
-  <script src="js/db.js"></script>
-  <title>Super-Todo-Uper</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- App -->
+    <script src="js/app.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/db.js"></script>
 
-
-
-</head>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
 <body onload="loadAll()">
-  <div>
-    <h1>Super-Todo-Uper v3.0.0</h1>
-    <form>
-    <input id="addTaskText" type="text" placeholder="random text" required />
-    <span>
-      <input type="submit" onclick="saveTask()" value="Add"/>
-    </span>
-    </form>
-  </div>
-  <div>
-    <h2>My List</h2>
-    (<a href="#" onclick="myFunction()">show examples</a>) 
+  <div class="container">
+    <div class="col-sm-12 mb-3">
+      <h1>Super-Todo-Uper v3.0.0</h1>
+    </div>
+    <div class="col-sm-12 mb-3">
+      <div class="input-group input-group-lg">
+        <input id="addTaskText" class="form-control" autocomplete="off" type="text" placeholder="random text" required />
+        <button type="button" class="btn btn-secondary" onclick="saveTask()">Add</button>
+      </div>
+    </div>
+    <div class="col-sm-12 mb-3">
+      <h2>My List</h2>
+    </div>
+    <div class="col-sm-12 mb-3">
+      (<a href="#" onclick="myFunction()">show examples</a>) <button onclick="clearAll()">Delete All</button>
+    </div>
 
-    <div id="hide" style="display: none">
+    <div id="hide" class="col-sm-12" style="display: none">
       <div><label><input class="pad" type="checkbox" onclick="toggleCheckboxText()" />Buy coffee and eggs</label>
           <button>delete</button>
       </div>
-
       <div><label style="text-decoration:line-through"><input class="pad" type="checkbox" onclick="toggleCheckboxText()"
           checked />Clean bathroom</label>
           <button>delete</button>
@@ -42,17 +53,20 @@
           checked />Register for seminar</label>
           <button>delete</button>
       </div>
-
     </div>
-
-    <div id="list">
-      <div class="item">
-        <p>There's nothing todo!</p>
+    <div class="col-sm-12">
+      <div id="list">
+        <div class="item">
+          <p>There's nothing todo!</p>
+        </div>
       </div>
     </div>
-    
 
   </div>
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 
 </html>
