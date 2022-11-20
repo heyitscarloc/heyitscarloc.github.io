@@ -47,19 +47,21 @@ function loadPlaceholderText() {
 }
 
 function saveTask() {
-  let taskText = document.getElementById("addTaskText").value;
-  
+   let addTaskForm = document.querySelector("#add-task-form");
   // do work only if we need to
-  if(!taskText) {
-    return;
+  if(!addTaskForm.checkValidity()) {
+    addTaskForm.classList.replace("needs-validation", "was-validated");
+
+    return false;
   }
 
-  let savedTask = s_saveTask(taskText, Date.now(), null);
+  addTaskForm.classList.replace("was-validated", "needs-validation");
+  
+  let taskText = document.getElementById("addTaskText");
+  let savedTask = s_saveTask(taskText.value, Date.now(), null);
   document.getElementById("addTaskText").value = "";
 
   refreshTasks();
-
-
 }
 
 
