@@ -101,5 +101,6 @@ function objectToDivItem(task, createdDate, completedDate) {
 }
 
 function emptyItem() {
-  return `<div class="item"><p>There's nothing todo!</p></div>`;
+  return `<div class="alert alert-primary nothing">There's nothing todo!</div>`;
 }
+
