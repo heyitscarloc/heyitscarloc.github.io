@@ -32,7 +32,7 @@
         <form id="add-task-form" class="g-3 needs-validation">
           <div class="input-group input-group-lg">
             <input id="addTaskText" class="form-control" autocomplete="off" type="text" placeholder="random text" required />
-            <button type="button" class="btn btn-secondary" onclick="saveTask()">Add</button>
+            <button type="button" id="addTaskButton" class="btn btn-secondary" onclick="saveTask()">Add</button>
           </div>
         </form>
       </div>
@@ -46,14 +46,16 @@
           </div>
 
           <!-- empty item -->
-          <div class='card shadow p-4 mb-4 bg-white'>
-            <div class='card-body'>
-               <div class="float-start">
-                  <div class="form-check">
-                   <input id="" class="form-check-input" type="checkbox" onclick="toggleCheckboxText()"><label class="form-check-label" for="">Buy a new washer/dryer</label>
-                 </div>
-               </div>
-               <div class="float-end"><button class="btn btn-primary float-end" onclick="deleteTask()">Delete</button></div>
+          <div class="empty-item" style="display:none">
+            <div class='card shadow p-4 mb-4 bg-white'>
+              <div class='card-body'>
+                <div class="float-start">
+                    <div class="form-check">
+                    <input id="" class="empty-checkbox form-check-input" type="checkbox" onclick="toggleCheckboxText()"><label class="empty-label form-check-label" for=""></label>
+                  </div>
+                </div>
+                <div class="float-end"><button class="btn btn-primary float-end" onclick="deleteTask()">Delete</button></div>
+              </div>
             </div>
           </div>
       </div>
