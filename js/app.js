@@ -33,10 +33,10 @@ function loadAll() {
   window.addEventListener('focus', refreshTasks);
 
   //on enter then assume user clicked add
-  document.getElementById("addTaskText").addEventListener("keyup", function(event) {
-    event.preventDefault();
+  document.getElementById("addTaskText").addEventListener("keydown", function(event) {
     if(event.keyCode === 13) {
-      document.getElementById("addTaskButton").click;
+      event.preventDefault();
+      document.getElementById("addTaskButton").click();
     }
   });
 }
