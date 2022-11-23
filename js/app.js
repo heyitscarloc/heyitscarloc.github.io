@@ -5,10 +5,10 @@ function toggleCheckboxText() {
   var labelToUpdate = event.target.closest(".item").querySelector("label");
 
   // update UI
-  if(event.target.checked){
+  if (event.target.checked) {
     labelToUpdate.classList.add("text-decoration-line-through");
     completedDate = Date.now();
-  }else{
+  } else {
     labelToUpdate.classList.remove("text-decoration-line-through");
     completedDate = null;
   }
@@ -30,6 +30,7 @@ function loadAll() {
 
   loadPlaceholderText();
   refreshTasks();
+  window.addEventListener('focus', refreshTasks);
 
   //on enter then assume user clicked add
   document.getElementById("addTaskText").addEventListener("keyup", function(event) {
@@ -42,7 +43,7 @@ function loadAll() {
 
 function loadPlaceholderText() {
   // array of potential placeholders
-  var randomPlaceholderText = ["Take a walk", "Fill cat's food bowl", "Go to doctors appointment", "Do the laundry", "Replace fish tank water", "Accept RSVP for event", "Replace tires", "Rake the leaves", "Buy milk", "Get high" ];
+  var randomPlaceholderText = ["Take a walk", "Fill cat's food bowl", "Go to doctors appointment", "Do the laundry", "Replace fish tank water", "Accept RSVP for event", "Replace tires", "Rake the leaves", "Buy milk", "Get high"];
 
   //selected placeholder text using math api
   var pickedPlaceholderText = randomPlaceholderText[Math.floor(Math.random() * 10)];
@@ -56,16 +57,16 @@ function loadPlaceholderText() {
 }
 
 function saveTask() {
-   let addTaskForm = document.querySelector("#add-task-form");
+  let addTaskForm = document.querySelector("#add-task-form");
   // do work only if we need to
-  if(!addTaskForm.checkValidity()) {
+  if (!addTaskForm.checkValidity()) {
     addTaskForm.classList.replace("needs-validation", "was-validated");
 
     return false;
   }
 
   addTaskForm.classList.replace("was-validated", "needs-validation");
-  
+
   let taskText = document.getElementById("addTaskText");
   let savedTask = s_saveTask(taskText.value, Date.now(), null);
   document.getElementById("addTaskText").value = "";
@@ -87,10 +88,11 @@ function refreshTasks() {
   document.querySelectorAll(".item").forEach(item => item.remove());
 
   let tasks = s_getAllTasks();
-  
+
   // refresh task list
   for(let i=0; i < tasks.length; i++) {
     document.getElementById("list").appendChild(objectToDivItem(tasks[i].task, tasks[i].createdDate, tasks[i].completedDate));
+
   }
   //toggle there's nothing todo
   showHideNothingClass(tasks);
