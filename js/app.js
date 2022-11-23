@@ -1,12 +1,15 @@
 
 function toggleCheckboxText() {
   let completedDate;
+
+  var labelToUpdate = event.target.closest(".item").querySelector("label");
+
   // update UI
-  if(event.target.checked){
-    event.target.parentElement.style.textDecoration= "line-through";
+  if (event.target.checked) {
+    labelToUpdate.classList.add("text-decoration-line-through");
     completedDate = Date.now();
-  }else{
-    event.target.parentElement.style.textDecoration= "none";
+  } else {
+    labelToUpdate.classList.remove("text-decoration-line-through");
     completedDate = null;
   }
 
@@ -23,26 +26,24 @@ function deleteTask() {
   refreshTasks();
 }
 
-function myFunction() {
-  var x = document.getElementById("hide");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
 function loadAll() {
 
   loadPlaceholderText();
   refreshTasks();
+  window.addEventListener('focus', refreshTasks);
 
-  self.setInterval(refreshTasks, 5000);
+  //on enter then assume user clicked add
+  document.getElementById("addTaskText").addEventListener("keydown", function(event) {
+    if(event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("addTaskButton").click();
+    }
+  });
 }
 
 function loadPlaceholderText() {
   // array of potential placeholders
-  var randomPlaceholderText = ["Take a walk", "Fill cat's food bowl", "Go to doctors appointment", "Do the laundry", "Replace fish tank water", "Accept RSVP for event", "Replace tires", "Rake the leaves", "Buy milk", "Get high" ];
+  var randomPlaceholderText = ["Take a walk", "Fill cat's food bowl", "Go to doctors appointment", "Do the laundry", "Replace fish tank water", "Accept RSVP for event", "Replace tires", "Rake the leaves", "Buy milk", "Get high"];
 
   //selected placeholder text using math api
   var pickedPlaceholderText = randomPlaceholderText[Math.floor(Math.random() * 10)];
@@ -56,19 +57,30 @@ function loadPlaceholderText() {
 }
 
 function saveTask() {
-  let taskText = document.getElementById("addTaskText").value;
-  
+  let addTaskForm = document.querySelector("#add-task-form");
   // do work only if we need to
-  if(!taskText) {
-    return;
+  if (!addTaskForm.checkValidity()) {
+    addTaskForm.classList.replace("needs-validation", "was-validated");
+
+    return false;
   }
 
-  let savedTask = s_saveTask(taskText, Date.now(), null);
+  addTaskForm.classList.replace("was-validated", "needs-validation");
+
+  let taskText = document.getElementById("addTaskText");
+  let savedTask = s_saveTask(taskText.value, Date.now(), null);
   document.getElementById("addTaskText").value = "";
 
   refreshTasks();
+}
 
-
+function showHideNothingClass(tasks) {
+  var x = document.querySelector(".nothing");
+  if (tasks.length > 0) {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
 }
 
 function refreshTasks() {
@@ -76,25 +88,46 @@ function refreshTasks() {
   document.querySelectorAll(".item").forEach(item => item.remove());
 
   let tasks = s_getAllTasks();
-  
+
   // refresh task list
   for(let i=0; i < tasks.length; i++) {
-    document.getElementById("list").innerHTML += objectToDivItem(tasks[i].task, tasks[i].createdDate, tasks[i].completedDate);
+    document.getElementById("list").appendChild(objectToDivItem(tasks[i].task, tasks[i].createdDate, tasks[i].completedDate));
+
   }
+  //toggle there's nothing todo
+  showHideNothingClass(tasks);
 }
 
 function clearAll() {
   s_clearAll();
   // clear all items
-  document.querySelectorAll(".item").forEach(item => item.remove());
-  document.getElementById("list").innerHTML += emptyItem();
+  var items = document.querySelectorAll(".item").forEach(item => item.remove());
+  showHideNothingClass(items);
 }
 
 // html to update
 function objectToDivItem(task, createdDate, completedDate) {
-  return `<div class='item' style=${completedDate !== null ? 'text-decoration:line-through' : ''}><label><input id='${createdDate}' class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== null ? 'checked' : ''} >${task}</label><button onclick='deleteTask()'>delete</button></div>`;
-}
+  var clonedEmptyItem = document.querySelector(".empty-item").cloneNode(true);
+  clonedEmptyItem.style.display = "block"
+  clonedEmptyItem.classList.add("item");
+  clonedEmptyItem.classList.remove("empty-item");
 
-function emptyItem() {
-  return `<div class="item"><p>There's nothing todo!</p></div>`;
+
+  var emptyCheckbox = clonedEmptyItem.querySelector(".empty-checkbox");
+  emptyCheckbox.id = createdDate;
+  emptyCheckbox.checked = completedDate ? true : false;
+  emptyCheckbox.classList.remove("empty-checkbox");
+
+  var emptyLabel = clonedEmptyItem.querySelector(".empty-label");
+  emptyLabel.setAttribute("for", createdDate);
+  emptyLabel.innerHTML = task;
+  
+  if(completedDate) {
+    emptyLabel.classList.add("text-decoration-line-through");
+  }
+
+  emptyLabel.classList.remove("empty-label");
+  
+
+  return clonedEmptyItem;
 }
