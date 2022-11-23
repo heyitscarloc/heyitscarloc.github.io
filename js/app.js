@@ -28,7 +28,7 @@ function loadAll() {
   loadPlaceholderText();
   refreshTasks();
 
-  self.setInterval(refreshTasks, 5000);
+  //self.setInterval(refreshTasks, 5000);
 }
 
 function loadPlaceholderText() {
@@ -97,7 +97,7 @@ function clearAll() {
 
 // html to update
 function objectToDivItem(task, createdDate, completedDate) {
-  return `<div class='item' style=${completedDate !== null ? 'text-decoration:line-through' : ''}><label><input id='${createdDate}' class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== null ? 'checked' : ''} >${task}</label><button onclick='deleteTask()'>delete</button></div>`;
+  return `<div class='card shadow-sm p-4 mb-4 bg-white'><div class='card-body item' style=${completedDate !== null ? 'text-decoration:line-through' : ''}><label><input id='${createdDate}' class='pad' type='checkbox' onclick='toggleCheckboxText()' ${completedDate !== null ? 'checked' : ''} >${task}</label><button onclick='deleteTask()'>delete</button></div></div>`;
 }
 
 function emptyItem() {
