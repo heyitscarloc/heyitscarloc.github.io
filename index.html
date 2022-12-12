@@ -44,7 +44,8 @@
         <div class="input-group input-group-lg">
           <input id="addTaskText" class="form-control" autocomplete="off" type="text" placeholder="random text"
             required />
-          <button type="button" id="addTaskButton" class="btn btn-secondary" onclick="saveTask()"><span class="d-none d-sm-block">Add</span>
+          <button type="button" id="addTaskButton" class="btn btn-secondary" onclick="saveTask()"><span
+              class="d-none d-sm-block">Add</span>
             <i class="fa-solid fa-plus d-block d-sm-none"></i>
           </button>
         </div>
@@ -61,20 +62,25 @@
 
         <!-- empty item -->
         <div class="empty-item" style="display:none">
-          <div class='card shadow p-4 mb-4 bg-white'>
+          <div class='card shadow p-1 mb-1 bg-white'>
             <div class='card-body'>
-              <div class="float-start">
-                <div class="form-check">
-                  <input id="" class="empty-checkbox form-check-input" type="checkbox"
-                    onclick="toggleCheckboxText()"><label class="empty-label form-check-label" for=""></label>
+              <div class="row">
+                <div class="col-11">
+                  <div class="form-check">
+                    <input id="" class="empty-checkbox form-check-input" type="checkbox"
+                      onclick="toggleCheckboxText()"><label class="empty-label form-check-label" for=""></label>
+                  </div>
+                </div>
+                <div class="col-1">
+                <div class="float-end">        
+                      <button class="btn btn-primary" onclick="deleteTask()"><span
+                          class="d-none d-sm-block">Delete</span>
+                        <i class="fa-regular fa-trash-can d-block d-sm-none"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="float-end">
-                <button class="btn btn-primary" onclick="deleteTask()"><span class="d-none d-sm-block">Delete</span>
-                <i class="fa-regular fa-trash-can d-block d-sm-none"></i>
-                </button>
-              </div>
-
             </div>
           </div>
         </div>
