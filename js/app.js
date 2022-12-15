@@ -23,7 +23,9 @@ function deleteTask() {
   let itemDiv = event.target.closest(".item");
   let checkboxHtml = itemDiv.querySelector("input");
   s_deleteTask(checkboxHtml.id);
-  refreshTasks();
+  
+  deleteAnimation(itemDiv);
+  setTimeout(refreshTasks, 250);
 }
 
 function loadAll() {
