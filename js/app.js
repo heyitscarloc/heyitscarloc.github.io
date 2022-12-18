@@ -24,8 +24,7 @@ function deleteTask() {
   let checkboxHtml = itemDiv.querySelector("input");
   s_deleteTask(checkboxHtml.id);
   
-  deleteAnimation(itemDiv);
-  setTimeout(refreshTasks, 250);
+  refreshTasks();
 }
 
 function loadAll() {
@@ -93,11 +92,21 @@ function refreshTasks() {
 
   // refresh task list
   for(let i=0; i < tasks.length; i++) {
+    // append to DOM
     document.getElementById("list").appendChild(objectToDivItem(tasks[i].task, tasks[i].createdDate, tasks[i].completedDate));
-
+    
+    // get appended item
+    var lastAppendedItem = document.querySelector(".item:last-child");
+    bindSwipeEvents(lastAppendedItem);
   }
   //toggle there's nothing todo
   showHideNothingClass(tasks);
+}
+
+
+
+function findTopItem(e) {
+  return e.target.classList.contains("item") ? e.target : e.target.closest(".item");
 }
 
 function clearAll() {
