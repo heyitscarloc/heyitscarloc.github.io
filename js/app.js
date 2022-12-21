@@ -23,7 +23,7 @@ function deleteTask() {
   let itemDiv = event.target.closest(".item");
   let checkboxHtml = itemDiv.querySelector("input");
   s_deleteTask(checkboxHtml.id);
-  
+
   refreshTasks();
 }
 
@@ -34,8 +34,8 @@ function loadAll() {
   window.addEventListener('focus', refreshTasks);
 
   //on enter then assume user clicked add
-  document.getElementById("addTaskText").addEventListener("keydown", function(event) {
-    if(event.keyCode === 13) {
+  document.getElementById("addTaskText").addEventListener("keydown", function (event) {
+    if (event.keyCode === 13) {
       event.preventDefault();
       document.getElementById("addTaskButton").click();
     }
@@ -85,16 +85,30 @@ function showHideNothingClass(tasks) {
 }
 
 function refreshTasks() {
-  // clear all items
-  document.querySelectorAll(".item").forEach(item => item.remove());
+
+  // hide list
+  let mainList = document.querySelector('#list');
+  mainList.classList.add('animate__animated', 'animate__bounceOutLeft');
+  
+  mainList.addEventListener('animationend', () => {
+    // clear all items
+    document.querySelectorAll(".item").forEach(item => item.remove());
+    document.querySelector('#list').classList.remove('animate__animated', 'animate__bounceOutLeft');
+  });
+
+  //mainList.style.display = "none";
+  
+
+
+
 
   let tasks = s_getAllTasks();
 
   // refresh task list
-  for(let i=0; i < tasks.length; i++) {
+  for (let i = 0; i < tasks.length; i++) {
     // append to DOM
     document.getElementById("list").appendChild(objectToDivItem(tasks[i].task, tasks[i].createdDate, tasks[i].completedDate));
-    
+
     // get appended item
     var lastAppendedItem = document.querySelector(".item:last-child");
     bindSwipeEvents(lastAppendedItem);
@@ -102,6 +116,10 @@ function refreshTasks() {
   //toggle there's nothing todo
   showHideNothingClass(tasks);
 }
+
+
+
+
 
 
 
@@ -132,13 +150,13 @@ function objectToDivItem(task, createdDate, completedDate) {
   var emptyLabel = clonedEmptyItem.querySelector(".empty-label");
   emptyLabel.setAttribute("for", createdDate);
   emptyLabel.innerHTML = task;
-  
-  if(completedDate) {
+
+  if (completedDate) {
     emptyLabel.classList.add("text-decoration-line-through");
   }
 
   emptyLabel.classList.remove("empty-label");
-  
+
 
   return clonedEmptyItem;
 }
